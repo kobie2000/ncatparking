@@ -1,0 +1,74 @@
+create database ncatparking;
+use database ncatparking;
+
+create table parkinglot(
+id int,
+num_of_blocks int,
+availability char(1),
+address varchar(100),
+zip varchar(10),
+reentry char(1),
+primary key (id));
+
+create table block(
+id int,
+plot_id int,
+block_code varchar(5),
+num_of_floors int,
+is_block_filled char(1),
+primary key (id),
+foreign key (plot_id) references parkinglot(id));
+
+create table floor(
+id int,
+bid int,
+fnumber int,
+num_of_slots int,
+is_accessible char(1),
+is_floor_filled char(1),
+primary key (id),
+foreign key (bid) references block(id));
+
+create table parking_slot(
+id int,
+fid int,
+slot_num int,
+primary key(id),
+foreign key (fid) references floor(id));
+
+create table user(
+id int,
+vehicle_num varchar(20),
+registration_date date,
+registered_user char(1),
+phone_num int,
+primary key (id));
+
+create table parking_permit(
+id int,
+user_id int,
+buy_date date,
+begin_date date,
+duration_days int,
+cost int(10,2),
+primary key(id), 
+foreign key (user_id) references user(id));
+
+create table parking_traker(
+id int,
+user_id int,
+time time,
+duration_min int,
+park_date date,
+parking_slot_id int,
+primary key(id),
+foreign key(user_id) references user(id),
+foreign key(parking_slot_id) references parking_slot(id));
+
+create table parking_pass(
+id int,
+chosen_parking_slot int,
+entry_time time,
+exit_time time,
+primary key(id),
+foreign key(chosen_parking_slot) references parking_slot(slot_num));
