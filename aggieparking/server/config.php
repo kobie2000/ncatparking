@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Class for storing global variables.
- *
- * @author	Humphrey Shotton
- * @version	1.1 (2014-03-21)
- */
 
 class Conf{
 	// MySQL Database Settings.
@@ -15,13 +9,13 @@ class Conf{
 	const DB_DATABASE = "raspi";
 	
 	// Base URL on the server.
-	const URL_BASE = "/pipark/server/";
+	const URL_BASE = "/aggieparking/server/";
 	
 	// The password for the pi's to submit data.
-	const PI_PASSWORD = 'exeterPiPark';
+	const PI_PASSWORD = 'minnesota23';
 	
 	// Title of the website.
-	const TITLE = 'PiPark';
+	const TITLE = 'AggieParking';
 	
 	// Google maps API key
 	const MAPS_API_KEY = 'AIzaSyCxTGtd15r1PXxGyPSA17YjoPcN73ENmPc';
