@@ -18,7 +18,7 @@ try:
     import setup_data
 except ImportError:
     # oh noes, it doesn't =(
-    print "ERROR: setup_data.py does not exist. Run ./pipark_setup.py first."
+    print "ERROR: setup_data.py does not exist. Run ./aggiepark_setup.py first."
     sys.exit(1)
 
 # global variables
