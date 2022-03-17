@@ -1,11 +1,5 @@
 <?php
 
-/** 
- * Functions for use with the site.
- * 
- * @author	Humphrey Shotton
- * @version	1.1 (2014-03-21)
- */
 
 /**
  * To throw a json error with a message
