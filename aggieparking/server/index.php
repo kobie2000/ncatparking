@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Main page for car parking website.
- *
- * @author	Humphrey Shotton
- * @version	1.1 (2014-03-21)
- */
+
 
 require_once ('init.php');
 require_once ('includes/header.php');
