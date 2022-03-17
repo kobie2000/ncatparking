@@ -1,11 +1,5 @@
 <?php
 
-/** 
- * File for recieving the data from the pi's via a HTTP request.
- * 
- * @author	Humphrey Shotton
- * @version	1.0 (2014-01-16)
- */
  
 require_once( 'init.php' );
 
