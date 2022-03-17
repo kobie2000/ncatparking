@@ -71,7 +71,7 @@ class MainApplication(tk.Frame):
         # create canvas to display logo
         self.logo = tk.Canvas(self, width = 400, height = 148)
         self.logo.grid(row = 0, column = 0, rowspan = 1, columnspan = 2)
-        self.loadImage("./images/logo_main.jpeg", self.logo, 400/2, 148/2)
+        self.loadImage("./images/aggielogo.jpeg", self.logo, 400/2, 148/2)
         self.updateText()
         
         # create key-press handlers -> set focus to this frame
@@ -91,7 +91,7 @@ class MainApplication(tk.Frame):
         
         self.__label = "Parking Spaces Available:", occupied, "/", num_spaces
         
-        self.loadImage("./images/logo_main.jpeg", self.logo, 400/2, 148/2)
+        self.loadImage("./images/aggielogo.jpeg", self.logo, 400/2, 148/2)
         self.logo.create_text((200, 130), text = self.__label, fill = "white")
         
     # --------------------------------------------------------------------------
@@ -249,7 +249,7 @@ def create_application():
     # create the TKinter application
     root = tk.Tk()
     app = MainApplication(master = root)
-    app.master.title("PiPark 2014")
+    app.master.title("AggieParking")
     app.mainloop()
 
 # ------------------------------------------------------------------------------
