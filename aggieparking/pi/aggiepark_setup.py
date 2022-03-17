@@ -35,8 +35,8 @@ class Application(tk.Frame):
     __camera_is_active = False
     
     # image load/save locoations
-    SETUP_IMAGE = "./images/setup.jpeg"
-    DEFAULT_IMAGE = "./images/default.jpeg"
+    SETUP_IMAGE = "./images/aggies_main.jpeg"
+    DEFAULT_IMAGE = "./images/aggies_default.jpg"
     
     
     # --------------------------------------------------------------------------
@@ -538,7 +538,7 @@ class Application(tk.Frame):
                 title = "Save Setup",
                 type = tkMessageBox.YESNOCANCEL,
                 message = "Most recent changes to setup have not been saved."
-                + "Would you like to save before running PiPark?"
+                + "Would you like to save before running AggieParking?"
                 )
             if response: self.saveData()
             
@@ -546,7 +546,7 @@ class Application(tk.Frame):
         else:
             response = tkMessageBox.askyesno(
                 title = "Save Setup",
-                message = "Are you ready to leave setup and run PiPark?"
+                message = "Are you ready to leave setup and run AggieParking?"
                 )
         
         # user wishes to quit setup and run pipark, so do it!
@@ -556,7 +556,7 @@ class Application(tk.Frame):
 
                 # data invalid, so display message and return
                 tkMessageBox.showinfo(
-                    title = "PiPark Setup",
+                    title = "AggieParking Setup",
                     message = "Saved data is invalid. Please ensure that "
                     + "there are 3 control points and at least 1 parking "
                     + "space marked."
@@ -579,7 +579,7 @@ class Application(tk.Frame):
             
     
     def clickNewImage(self):
-        """Use PiCam to take new 'setup image' for PiPark setup. """
+        """Use PiCam to take new 'setup image' for AggieParking setup. """
         if self.__is_verbose: print "ACTION: Clicked 'Capture New Image'"
         self.__is_saved = False
         
@@ -727,7 +727,7 @@ class Application(tk.Frame):
         PADDING = 10;
         
         # start the main program
-        self.start_button = tk.Button(self, text = "Start PiPark",
+        self.start_button = tk.Button(self, text = "Start AggieParking",
             command = self.clickStart, padx = PADDING)
         self.start_button.grid(row = 0, column = 0,
             sticky = tk.W + tk.E + tk.N + tk.S)
@@ -816,5 +816,5 @@ if __name__ == "__main__":
 
     root = tk.Tk()
     app = Application(master = root)
-    app.master.title("PiPark Setup")
+    app.master.title("AggieParking Setup")
     app.mainloop()
