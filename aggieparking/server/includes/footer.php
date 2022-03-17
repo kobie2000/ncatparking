@@ -1,5 +1,5 @@
 <div class="footer">
-	&copy; Humphrey and Nick 2014
+	&copy; 
 </div>
 
 </div>
