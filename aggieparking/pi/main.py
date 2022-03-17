@@ -257,17 +257,14 @@ def create_application():
 # ------------------------------------------------------------------------------
 def run():
     """
-    Run the main PiPark program. This function periodically captures a new image
+    Run the main program. This function periodically captures a new image
     and then tests for changes in the parking space reference areas compared to
-    the control points as set during the setup procedure (./pipark_setup.py).
+    the control points as set during the setup procedure (./aggiepark_setup.py).
     
     When a change has been detected for 3 ticks the server (to which the pi is
     registered) is updated to accordingly show whether the appropriate parking
     spaces are filled or empty.
-    
-    This function is run mainly as an infinite loop until the application
-    is destroyed.
-    
+       
     """
     if s.IS_VERBOSE: print "INFO: run() called. "
     
@@ -278,7 +275,7 @@ def run():
     global occupancy
     global app
     
-    image_location = "./images/pipark.jpeg"  # image save location
+    image_location = "./images/aggiepark.jpeg"  # image save location
     loop_delay = s.PICTURE_DELAY  # duration between each loop in seconds
         
     # load data sets and count the number of spaces and control boxes
@@ -427,7 +424,7 @@ def run():
 #  Main
 # -----------------------------------------------------------------------------
 def main():
-    """Start PiPark application and Smart Parking System loop. """
+    """AggiePark application and Smart Parking System loop. """
     
     # use global variables (Oh D-d-d-dear)!
     global has_quit
