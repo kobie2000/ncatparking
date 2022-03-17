@@ -1,11 +1,5 @@
 <?php
 
-/** 
- * Initialization file for Raspberry Pi car parking sensor.
- * 
- * @author	Humphrey Shotton
- * @version	1.0 (2014-01-16)
- */
 
 // The directory of the init file.
 $base = dirname(__FILE__);
@@ -13,7 +7,7 @@ $base = dirname(__FILE__);
 require_once($base . '/config.php');
 require_once($base . '/includes/functions.php');
 
-date_default_timezone_set('Europe/London');
+date_default_timezone_set('United States/New York');
 
 /**
  * Class for organising database connection 
