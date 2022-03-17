@@ -1,11 +1,5 @@
 <?php
 
-/**
- * API for acessing data via JSON.
- *
- * @author	Humphrey Shotton
- * @version	1.0 (2014-01-28)
- */
 
 require_once ('init.php');
 
