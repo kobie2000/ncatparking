@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Page for showing car parking spaces
- *
- * @author	Humphrey Shotton
- * @version	1.1 (2014-03-21)
- */
 
 require_once ('init.php');
 
