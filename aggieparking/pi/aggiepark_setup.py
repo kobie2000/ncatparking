@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
+from TKinter import *
 import os
 import Tkinter as tk
 import tkMessageBox
-from Pillow import Image, ImageTk
+from PIL import Image, ImageTk
 
 import imageread
 import main
