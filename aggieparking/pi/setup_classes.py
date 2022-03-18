@@ -1,11 +1,7 @@
 
 import Tkinter as tk
 
-# ==============================================================================
-#
-#   Parking Space Class
-#
-# ==============================================================================
+
 class ParkingSpace:
     # replacement for setup_classes.Area
     
@@ -173,11 +169,7 @@ class ParkingSpace:
         else:
             return None
 
-# ==============================================================================
-#
-#   Control Point Class
-#
-# ==============================================================================
+
 class ControlPoint:
     # replacement for setup_clases.Area
     
@@ -336,13 +328,7 @@ class ControlPoint:
         
 
 
-# and now for something completely different...
 
-# ==============================================================================
-#
-#   Boxes Class
-#
-# ==============================================================================
 class Boxes:
     boxes = []
     
