@@ -1,19 +1,12 @@
-#!/usr/bin/env python
+
 
 import os
 import Tkinter as tk
 import tkMessageBox
 
-# ==============================================================================
-#
-#   Application Class
-#
-# ==============================================================================
 class Application(tk.Frame):
 
-    # --------------------------------------------------------------------------
-    #   Constructor Method
-    # --------------------------------------------------------------------------
+   
     def __init__(self, master = None):
         """Application constructor method. """
 
@@ -27,9 +20,7 @@ class Application(tk.Frame):
         self.__createMenu()  # menu canvas: holds the buttons and menu bar image
     
 
-    # --------------------------------------------------------------------------
-    #   Create Options Menu
-    # --------------------------------------------------------------------------
+  
     def __createMenu(self):
         """Create a tkinter canvas in which to hold the menu buttons. """
         
@@ -99,9 +90,7 @@ class Application(tk.Frame):
         self.save_button = tk.Button(self, text = "Save Settings", command = self.save, padx = PADDING, pady = PADDING)
         self.save_button.grid(row = len(self.options), column = 1, sticky = tk.W + tk.E + tk.N + tk.S, columnspan = 2, pady = 2)
 
-    # --------------------------------------------------------------------------
-    #   Save Method
-    # --------------------------------------------------------------------------  
+    
     def save(self):
         """ For saving the outputs to a file."""
         fail = False
@@ -121,7 +110,7 @@ class Application(tk.Frame):
                 try:
                     ostr += option[2] + ' = ' + str(int(self.options[i][1].get())) + BREAK
                 except ValueError:
-                    print "ERROR: Number is not an int."
+                    print ("ERROR: Number is not an int.")
                     fail = True
                     break 
             elif option[1] == 'check':
