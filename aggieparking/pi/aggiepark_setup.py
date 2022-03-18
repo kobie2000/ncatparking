@@ -120,12 +120,12 @@ class Application(tk.Frame):
         except TypeError:
             # arguments of incorrect data type, load unsuccessful
             if self.__is_verbose: 
-                print "ERROR: loadImage() arguments of incorrect data type."
+                print ("ERROR: loadImage() arguments of incorrect data type.")
             return False
         except:
             # image failed to load
             if self.__is_verbose: 
-                print "ERROR: loadImage() failed to load image " + image_address
+                print ("ERROR: loadImage() failed to load image " + image_address)
             return False
     
     
@@ -152,7 +152,7 @@ class Application(tk.Frame):
             self.__camera.exposure_mode = 'auto';
             self.__camera.start_preview()
             self.__camera_is_active = True
-            if self.__is_verbose: print "INFO: PiCam activated."
+            if self.__is_verbose: print ("INFO: PiCam activated.")
         except:
             # camera failed to load, display error message
             tkMessageBox.showerror(title = "Error!",
@@ -192,8 +192,8 @@ class Application(tk.Frame):
         print >> f1, ']'
         self.__is_saved = True
             
-        if self.__is_verbose: print 'INFO: Data saved in file setup_data.py.'
-        tkMessageBox.showinfo(title = "PiPark Setup", 
+        if self.__is_verbose: print ('INFO: Data saved in file setup_data.py.')
+        tkMessageBox.showinfo(title = "AggieParking Setup", 
             message = "Data saved successfully.")
     
     # --------------------------------------------------------------------------
@@ -206,7 +206,7 @@ class Application(tk.Frame):
             reload(setup_data)
         except:
             if self.__is_verbose: 
-                print "ERROR: Problem loading data from ./setup_data.py"
+                print ("ERROR: Problem loading data from ./setup_data.py")
             tkMessageBox.showerror(
                 title = "Error!", 
                 message = "Problem loading data from setup_data.py"
@@ -228,7 +228,7 @@ class Application(tk.Frame):
         Boolean -- True if criteria is met, False if not.
             
         """
-        if self.__is_verbose: print "INFO: Data is being checked for validity."
+        if self.__is_verbose: print ("INFO: Data is being checked for validity.")
         
         # get the boxes data to check from setup_data
         try:
@@ -242,13 +242,13 @@ class Application(tk.Frame):
             
         except ImportError:
             if self.__is_verbose: 
-                print "ERROR: Problem loading data from ./setup_data.py"
+                print ("ERROR: Problem loading data from ./setup_data.py")
         except ValueError:
             if self.__is_verbose:
-                print "ERROR: ./setup_data.py 'boxes' is empty."
+                print ("ERROR: ./setup_data.py 'boxes' is empty.")
         except:
             if self.__is_verbose:
-                print "ERROR: ./setup_data.py does not contain 'boxes'."
+                print ("ERROR: ./setup_data.py does not contain 'boxes'.")
                
         # create lists to hold data of each type
         space_boxes = []
@@ -261,7 +261,7 @@ class Application(tk.Frame):
             elif data_set[1] == 1: 
                 control_boxes.append(data_set)
             elif self.__is_verbose:
-                print "ERROR: Box-type not set to either 0 or 1."
+                print ("ERROR: Box-type not set to either 0 or 1.")
         
         # data is valid if there is at least 1 space and exactly 3 control points
         if len(space_boxes) > 0 and len(control_boxes) == 3: 
@@ -269,7 +269,7 @@ class Application(tk.Frame):
         else:
             valid_data = False
         
-        if self.__is_verbose: print "INFO: Data checked. Data is", valid_data
+        if self.__is_verbose: print ("INFO: Data checked. Data is", valid_data)
         return valid_data
                     
     # --------------------------------------------------------------------------
@@ -320,7 +320,7 @@ class Application(tk.Frame):
         try:
             import senddata
         except:
-            print "ERROR: Could not import send data file."
+            print ("ERROR: Could not import send data file.")
             return
         
 
@@ -329,7 +329,7 @@ class Application(tk.Frame):
         
         try:
             out['error']
-            print "ERROR: Error in connecting to server. Please update settings.py."
+            print ("ERROR: Error in connecting to server. Please update settings.py.")
             return
         except:
             pass
@@ -343,10 +343,10 @@ class Application(tk.Frame):
                     return
                 else:
                     if self.__is_verbose:
-                        print "INFO: Registering area", box[0], "on server."
+                        print ("INFO: Registering area", box[0], "on server.")
          
         # print success message if verbose        
-        if self.__is_verbose: print "\nINFO: Server registration successful."
+        if self.__is_verbose: print ("\nINFO: Server registration successful.")
         
         
 # ==============================================================================
@@ -410,12 +410,12 @@ class Application(tk.Frame):
             self.__camera_is_active = False
             
             if self.__is_verbose: 
-                print "INFO: PiCam deactivated."
+                print ("INFO: PiCam deactivated.")
             
         except:
             # image failed to close for some reason, show error message
             if self.__is_verbose:
-                print "ERROR: PiCam failed to close correctly."
+                print ("ERROR: PiCam failed to close correctly.")
     
     # --------------------------------------------------------------------------
     #   Key-press Event Handler
@@ -427,7 +427,7 @@ class Application(tk.Frame):
         NUM_KEYS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
         
         if key in NUM_KEYS:
-            if self.__is_verbose: print "INFO: Number-key pressed", key
+            if self.__is_verbose: print ("INFO: Number-key pressed", key)
             
             if self.spaces_button.getIsActive():
                 self.__parking_spaces.setCurrentBox(int(key))
@@ -455,7 +455,7 @@ class Application(tk.Frame):
         
         # add new control points (max = 3)
         if self.cps_button.getIsActive():
-            if self.__is_verbose: print "INFO: Add Control Point"
+            if self.__is_verbose: print ("INFO: Add Control Point")
             self.__is_saved = False
             
             this_cp_id = self.__control_points.getCurrentBox()
@@ -464,7 +464,7 @@ class Application(tk.Frame):
         
         # add new parking space
         elif self.spaces_button.getIsActive():
-            if self.__is_verbose: print "INFO: Add Parking Space"
+            if self.__is_verbose: print ("INFO: Add Parking Space")
             self.__is_saved = False
             
             this_space_id = self.__parking_spaces.getCurrentBox()
@@ -473,7 +473,7 @@ class Application(tk.Frame):
             
         # do nothing -- ignore LMB clicks
         else:
-            if self.__is_verbose: print "INFO: Just clicking LMB merrily =D"
+            if self.__is_verbose: print ("INFO: Just clicking LMB merrily =D")
 
         # return focus to the main frame for key-press events
         self.focus_set()
@@ -489,21 +489,21 @@ class Application(tk.Frame):
         
         # perform correct operation, dependent on which toggle button is active
         if self.cps_button.getIsActive():
-            if self.__is_verbose: print "INFO: Remove Control Point"
+            if self.__is_verbose: print ("INFO: Remove Control Point")
             self.__is_saved = False
             
             self.__control_points.boxes[self.__control_points.getCurrentBox()].clear()
             self.__control_points.boxes[self.__control_points.getCurrentBox()].deleteRectangle(self.display)
             
         elif self.spaces_button.getIsActive():
-            if self.__is_verbose: print "INFO: Remove parking space"
+            if self.__is_verbose: print ("INFO: Remove parking space")
             self.__is_saved = False
             
             self.__parking_spaces.boxes[self.__parking_spaces.getCurrentBox()].clear()
             self.__parking_spaces.boxes[self.__parking_spaces.getCurrentBox()].deleteRectangle(self.display)
             
         else:
-            if self.__is_verbose: print "INFO: Just clicking RMB merrily =)"
+            if self.__is_verbose: print ("INFO: Just clicking RMB merrily =)")
         
         # return focus to the main frame for key-press events
         self.focus_set()
@@ -520,7 +520,7 @@ class Application(tk.Frame):
         PiPark program.
 
         """
-        if self.__is_verbose: print "ACTION: Clicked 'Start'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Start'")
         
         # turn off toggle buttons
         self.spaces_button.setOff()
@@ -564,12 +564,12 @@ class Application(tk.Frame):
                 return
                     
             self.quit_button.invoke()
-            if self.__is_verbose: print "INFO: Setup application terminated. "
+            if self.__is_verbose: print ("INFO: Setup application terminated. ")
             main.main()
     
     def clickRegister(self):
         """Register the car park with the server. """
-        if self.__is_verbose: print "ACTION: Clicked 'Register'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Register'")
         
         # turn off toggle buttons
         self.spaces_button.setOff()
@@ -580,7 +580,7 @@ class Application(tk.Frame):
     
     def clickNewImage(self):
         """Use PiCam to take new 'setup image' for AggieParking setup. """
-        if self.__is_verbose: print "ACTION: Clicked 'Capture New Image'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Capture New Image'")
         self.__is_saved = False
         
         # turn off toggle buttons
@@ -594,7 +594,7 @@ class Application(tk.Frame):
         self.turnOnCamera()
     
     def clickSave(self):
-        if self.__is_verbose: print "ACTION: Clicked Save'"
+        if self.__is_verbose: print ("ACTION: Clicked Save'")
         
         # turn off toggle buttons
         self.spaces_button.setOff()
@@ -603,7 +603,7 @@ class Application(tk.Frame):
         self.saveData()
     
     def clickLoad(self):
-        if self.__is_verbose: print "ACTION: Clicked 'Load'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Load'")
         
         # turn off toggle buttons
         self.spaces_button.setOff()
@@ -624,7 +624,7 @@ class Application(tk.Frame):
         self.spaces_button.config(state = tk.ACTIVE)
     
     def clickClear(self):
-        if self.__is_verbose: print "ACTION: Clicked 'Clear'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Clear'")
         self.__is_saved = False
         
         # clear all data points, to start afresh
@@ -634,7 +634,7 @@ class Application(tk.Frame):
 
     def clickSpaces(self):
         """Add/remove parking-space bounding boxes. """
-        if self.__is_verbose: print "ACTION: Clicked 'Add/Remove Spaces'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Add/Remove Spaces'")
         
         # toggle the button, and turn off other toggle buttons
         self.spaces_button.toggle()
@@ -642,7 +642,7 @@ class Application(tk.Frame):
 
     def clickCPs(self):
         """Add/remove control points. """
-        if self.__is_verbose: print "ACTION: Clicked 'Add/Remove CPs'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Add/Remove CPs'")
         
         # toggle the button, and turn off other toggle buttons
         self.cps_button.toggle()
@@ -651,7 +651,7 @@ class Application(tk.Frame):
         
     def clickQuit(self):
         """Quit & terminate the application. """
-        if self.__is_verbose: print "ACTION: Clicked 'Quit'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Quit'")
         
         # turn off toggle buttons
         self.spaces_button.setOff()
@@ -674,7 +674,7 @@ class Application(tk.Frame):
     
     def clickAbout(self):
         """Open the README file for instructions on GUI use. """
-        if self.__is_verbose: print "ACTION: Clicked 'Open README'"
+        if self.__is_verbose: print ("ACTION: Clicked 'Open README'")
         
         # turn off toggle buttons
         self.spaces_button.setOff()
@@ -683,7 +683,7 @@ class Application(tk.Frame):
         # load external README from command line
         # TODO: Put this in new Tkinter window with scroll bar
         os.system("leafpad " + "./SETUP_README.txt")
-        if self.__is_verbose: print "INFO: Opened ./SETUP_README.txt in leafpad."
+        if self.__is_verbose: print ("INFO: Opened ./SETUP_README.txt in leafpad.")
         
         
 # ==============================================================================
