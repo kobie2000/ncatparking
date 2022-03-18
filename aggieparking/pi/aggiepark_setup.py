@@ -12,17 +12,10 @@ import data.settings as s
 from setup_classes import ParkingSpace, Boxes
 from ToggleButton import ToggleButton
 
-# ==============================================================================
-#
-#   Application Class
-#
-# ==============================================================================
+
 class Application(tk.Frame):
 
-    # --------------------------------------------------------------------------
-    #   Instance Attributes
-    # --------------------------------------------------------------------------
-    
+   
     # booleans
     __is_verbose = s.IS_VERBOSE  # print messages to terminal
     __is_saved = False
