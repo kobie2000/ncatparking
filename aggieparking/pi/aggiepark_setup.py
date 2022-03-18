@@ -70,14 +70,7 @@ class Application(tk.Frame):
             s.PICTURE_RESOLUTION[0]/2, s.PICTURE_RESOLUTION[1]/2)
     
     
-# ==============================================================================
-#
-#  Public Application Methods
-#
-# ==============================================================================           
-    # --------------------------------------------------------------------------
-    #   Load Image
-    # --------------------------------------------------------------------------
+
     def loadImage(self, image_address, canvas, width, height):
         """
         Load image at image_address. If the load is successful then return True,
@@ -123,9 +116,7 @@ class Application(tk.Frame):
             return False
     
     
-    # --------------------------------------------------------------------------
-    #   Activate the Pi Camera
-    # --------------------------------------------------------------------------
+  
     def turnOnCamera(self):
         """
         Instruct the user how to take a new setup image, then activate 
@@ -152,9 +143,7 @@ class Application(tk.Frame):
             tkMessageBox.showerror(title = "Error!",
                 message = "Error: Failed to setup and start PiCam.")
     
-    # --------------------------------------------------------------------------
-    #   Save Data
-    # --------------------------------------------------------------------------
+  
     def saveData(self):
         """Save the CP and parking space reference data to ./setup_data.py. """
         
@@ -190,9 +179,7 @@ class Application(tk.Frame):
         tkMessageBox.showinfo(title = "AggieParking Setup", 
             message = "Data saved successfully.")
     
-    # --------------------------------------------------------------------------
-    #   Load Data
-    # --------------------------------------------------------------------------        
+     
     def loadData(self):
         try:
             # load the setup data, reload to refresh the data
@@ -208,9 +195,7 @@ class Application(tk.Frame):
         self.__is_saved = True
         return setup_data.boxes
         
-    # --------------------------------------------------------------------------
-    #   Check Data
-    # --------------------------------------------------------------------------
+    
     def checkData(self):
         """
         Check that the setup data meets the following criteria:
@@ -266,9 +251,7 @@ class Application(tk.Frame):
         if self.__is_verbose: print ("INFO: Data checked. Data is", valid_data)
         return valid_data
                     
-    # --------------------------------------------------------------------------
-    #   Register Data
-    # --------------------------------------------------------------------------
+   
     def register(self):
         """Register the Pi with the server. """
         
