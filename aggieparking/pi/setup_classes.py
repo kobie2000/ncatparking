@@ -47,7 +47,7 @@ class ParkingSpace:
     	"""
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
-            print "ERROR: Cannot set start point: x & y must be integers."
+            print ("ERROR: Cannot set start point: x & y must be integers.")
         
         # set the start point and return the space   
         self.__start_point = [x, y]
@@ -68,7 +68,7 @@ class ParkingSpace:
     	"""
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
-            print "ERROR: Cannot set end point: x & y must be integers."
+            print ("ERROR: Cannot set end point: x & y must be integers.")
         
         # set the end point and return the space   
         self.__end_point = [x, y]
@@ -217,7 +217,7 @@ class ControlPoint:
     	"""
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
-            print "ERROR: Cannot set start point: x & y must be integers."
+            print ("ERROR: Cannot set start point: x & y must be integers.")
         
         # set the start point and return the space   
         self.__start_point = [x, y]
@@ -238,7 +238,7 @@ class ControlPoint:
     	"""
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
-            print "ERROR: Cannot set end point: x & y must be integers."
+            print ("ERROR: Cannot set end point: x & y must be integers.")
         
         # set the end point and return the space   
         self.__end_point = [x, y]
@@ -361,7 +361,7 @@ class Boxes:
             self.current_box = 0
             self.boxes = [ControlPoint(j, canvas) for j in range(self.MAX_CPS)]
         else:
-            print "ERROR: setup_classes.Boxes requires type 0 or 1."
+            print ("ERROR: setup_classes.Boxes requires type 0 or 1.")
         return
     
     #@staticmethod
