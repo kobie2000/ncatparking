@@ -27,15 +27,9 @@ camera = None
 has_quit = False
 occupancy = [None for i in range(10)]  # list of booleans. True for occupied, False for empty. None for no space.
 
-# ==============================================================================
-#
-#       Tkinter Application
-#
-# ==============================================================================
+
 class MainApplication(tk.Frame):
-    # ------------------------------------------------------------------------------
-    #  Instance Attributes
-    # ------------------------------------------------------------------------------
+   
     
     # output messages to the terminal?
     __is_verbose = s.IS_VERBOSE
@@ -46,9 +40,7 @@ class MainApplication(tk.Frame):
     
     __label = ""
     
-    # --------------------------------------------------------------------------
-    #  Constructor Method
-    # --------------------------------------------------------------------------
+  
     def __init__(self, master = None):
         """Application constructor method. """
         if self.__is_verbose: print ("INFO: Application constructor called.")
@@ -94,9 +86,7 @@ class MainApplication(tk.Frame):
         self.loadImage("./images/aggielogo.jpeg", self.logo, 400/2, 148/2)
         self.logo.create_text((200, 130), text = self.__label, fill = "white")
         
-    # --------------------------------------------------------------------------
-    #  Key Event Handlers
-    # --------------------------------------------------------------------------
+    
     def escapePressHandler(self, event):
         """Handle ESCAPE key events. """
         
@@ -112,9 +102,7 @@ class MainApplication(tk.Frame):
             # reset focus to application frame
             self.focus_set()
     
-    # --------------------------------------------------------------------------
-    #  Button Press Events
-    # --------------------------------------------------------------------------
+  
     def clickStartPreview(self):
         """Handle 'Start Preview' button click events. """
         if self.__is_verbose: print ("ACTION: 'Start Preview' clicked! ")
@@ -148,9 +136,7 @@ class MainApplication(tk.Frame):
         self.master.destroy()
         has_quit = True  # trigger exit of program
     
-    # --------------------------------------------------------------------------
-    #  Create Widgets
-    # --------------------------------------------------------------------------
+  
     def __createWidgets(self):
         """Create the widgets. """
         if self.__is_verbose: print ("INFO: Creating Widgets!")
@@ -166,10 +152,7 @@ class MainApplication(tk.Frame):
             command = self.clickQuit)
         self.quit_button.grid(row = 1, column = 1, 
             sticky = tk.W + tk.E + tk.N + tk.S)
-    
-    # --------------------------------------------------------------------------
-    #   Load Image
-    # --------------------------------------------------------------------------
+  
     def loadImage(self, image_address, canvas, width, height):
         """
         Load image at image_address. If the load is successful then return True,
@@ -218,24 +201,14 @@ class MainApplication(tk.Frame):
             return False
             
     
-    # --------------------------------------------------------------------------
-    #  Getter(s)
-    # --------------------------------------------------------------------------
-    # is verbose
+    
     def getIsVerbose():
         """Retrun boolean whether application is verbose or not. """
         return self.__is_verbose
         
 
 
-# ==============================================================================
-#
-#       Main Program Functions
-#
-# ==============================================================================
-# ------------------------------------------------------------------------------
-#  Create the Application
-# ------------------------------------------------------------------------------
+
 def create_application():
     """
     Create an instance of the MainApplication class defined in this module. 
@@ -252,9 +225,7 @@ def create_application():
     app.master.title("AggieParking")
     app.mainloop()
 
-# ------------------------------------------------------------------------------
-#  Run PiPark
-# ------------------------------------------------------------------------------
+
 def run():
     """
     Run the main program. This function periodically captures a new image
@@ -268,7 +239,7 @@ def run():
     """
     if s.IS_VERBOSE: print ("INFO: run() called. ")
     
-     # --- Pre-loop Setup ------------------------------------------------------
+    
     
     # variables
     global camera  # use global pi camera object!
@@ -358,7 +329,7 @@ def run():
             control_averages.append(control_average)
             
             
-        # --- Average Comparisons and Data Upload Phase ------------------------
+     
         
         # average pixel values now calculated for all Control Points and Parking
         # Spaces. Now move on to comparison and upload phase.
@@ -420,9 +391,7 @@ def run():
         imageread.time.sleep(loop_delay)
 
 
-# -----------------------------------------------------------------------------
-#  Main
-# -----------------------------------------------------------------------------
+
 def main():
     """AggiePark application and Smart Parking System loop. """
     
@@ -446,9 +415,7 @@ def main():
     while not has_quit:
     	pass
 
-# -----------------------------------------------------------------------------
-#  Setup Box Data
-# -----------------------------------------------------------------------------
+
 def __setup_box_data():
     """Import and return the boxes dictionary from setup_data.py. """
     
@@ -480,9 +447,7 @@ def __setup_box_data():
     print "space boxes:", space_boxes, "\ncontrol boxes:", control_boxes
     return space_boxes, control_boxes
         
-# -----------------------------------------------------------------------------
-#  Run Program
-# -----------------------------------------------------------------------------
+
 if __name__ == "__main__":
     main()
     
