@@ -18,7 +18,7 @@ try:
     import setup_data
 except ImportError:
     # oh noes, it doesn't =(
-    print "ERROR: setup_data.py does not exist. Run ./aggiepark_setup.py first."
+    print ("ERROR: setup_data.py does not exist. Run ./aggiepark_setup.py first.")
     sys.exit(1)
 
 # global variables
@@ -51,7 +51,7 @@ class MainApplication(tk.Frame):
     # --------------------------------------------------------------------------
     def __init__(self, master = None):
         """Application constructor method. """
-        if self.__is_verbose: print "INFO: Application constructor called."
+        if self.__is_verbose: print ("INFO: Application constructor called.")
 
         # run super constructor method
         tk.Frame.__init__(self, master)
@@ -100,14 +100,14 @@ class MainApplication(tk.Frame):
     def escapePressHandler(self, event):
         """Handle ESCAPE key events. """
         
-        if self.__is_verbose: print "ACTION: ESCAPE key pressed."
+        if self.__is_verbose: print ("ACTION: ESCAPE key pressed.")
         
         
         # if the camera is previewing -> stop the preview
         if self.__camera and self.__preview_is_active:
             self.__camera.stop_preview()
             self.__preview_is_active = False
-            if self.__is_verbose: print "INFO: Camera preview stopped. "
+            if self.__is_verbose: print ("INFO: Camera preview stopped. ")
             
             # reset focus to application frame
             self.focus_set()
@@ -117,7 +117,7 @@ class MainApplication(tk.Frame):
     # --------------------------------------------------------------------------
     def clickStartPreview(self):
         """Handle 'Start Preview' button click events. """
-        if self.__is_verbose: print "ACTION: 'Start Preview' clicked! "
+        if self.__is_verbose: print ("ACTION: 'Start Preview' clicked! ")
         
         # turn on the camera preview
         if self.__camera and not self.__preview_is_active:
@@ -132,7 +132,7 @@ class MainApplication(tk.Frame):
             
             self.__camera.start_preview()
             self.__preview_is_active = True
-            if self.__is_verbose: print "INFO: Camera preview started. "
+            if self.__is_verbose: print ("INFO: Camera preview started. ")
             
             # reset focus to the application frame
             self.focus_set()
@@ -153,7 +153,7 @@ class MainApplication(tk.Frame):
     # --------------------------------------------------------------------------
     def __createWidgets(self):
         """Create the widgets. """
-        if self.__is_verbose: print "INFO: Creating Widgets!"
+        if self.__is_verbose: print ("INFO: Creating Widgets!")
         
         # create show preview button
         self.preview_button = tk.Button(self, text = "Show Camera Feed",
@@ -189,7 +189,7 @@ class MainApplication(tk.Frame):
         canvas.delete(tk.ALL)
         
         if self.__is_verbose:
-            print "INFO: Tkinter Canvas cleared. Read to load new image. "
+            print ("INFO: Tkinter Canvas cleared. Read to load new image. ")
         
         try:
             # guard against incorrect argument datatypes
@@ -209,12 +209,12 @@ class MainApplication(tk.Frame):
         except TypeError:
             # arguments of incorrect data type, load unsuccessful
             if self.__is_verbose: 
-                print "ERROR: loadImage() arguments of incorrect data type."
+                print ("ERROR: loadImage() arguments of incorrect data type.")
             return False
         except:
             # image failed to load
             if self.__is_verbose: 
-                print "ERROR: loadImage() failed to load image " + image_address
+                print ("ERROR: loadImage() failed to load image " + image_address)
             return False
             
     
@@ -242,7 +242,7 @@ def create_application():
     Set the GUI to run in its mainloop().
     
     """
-    if s.IS_VERBOSE: print "INFO: create_application() called. "
+    if s.IS_VERBOSE: print ("INFO: create_application() called. ")
     
     global app
     
@@ -266,7 +266,7 @@ def run():
     spaces are filled or empty.
        
     """
-    if s.IS_VERBOSE: print "INFO: run() called. "
+    if s.IS_VERBOSE: print ("INFO: run() called. ")
     
      # --- Pre-loop Setup ------------------------------------------------------
     
@@ -282,7 +282,7 @@ def run():
     space_boxes, control_boxes = __setup_box_data()
     num_spaces = len(space_boxes)
     num_controls = len(control_boxes)
-    if s.IS_VERBOSE: print "INFO: #Spaces:", num_spaces, "\t#CPs:", num_controls
+    if s.IS_VERBOSE: print ("INFO: #Spaces:", num_spaces, "\t#CPs:", num_controls)
     
     # assert that the correct number of spaces and CPs are present in the data
     assert num_spaces > 0
@@ -302,14 +302,14 @@ def run():
         
         # capture new image & save to specified location
         camera.capture(image_location)
-        print "INFO: New image saved to:", image_location
+        print ("INFO: New image saved to:", image_location)
 
         try:
             # load image for processing
             image = imageread.Image.open(image_location)
             pixels = image.load()
         except:
-            print "ERROR: The image has failed to load. Check camera setup. "
+            print ("ERROR: The image has failed to load. Check camera setup. ")
             sys.exit(1)
 
         # setup space dimensions and averages, and if verbose, print to terminal
@@ -320,8 +320,8 @@ def run():
             space_h = abs(space[5] - space[3])
             
             if s.IS_VERBOSE: 
-                print "INFO: Space", space[0], "dimensions:"
-                print "      x:", space_x, "y:", space_y, "w:", space_w, "h:", space_h
+                print ("INFO: Space", space[0], "dimensions:")
+                print ("      x:", space_x, "y:", space_y, "w:", space_w, "h:", space_h)
             
             # append space average pixel to list of averages
             space_average = imageread.get_area_average(
@@ -344,8 +344,8 @@ def run():
             control_h = abs(control[5] - control[3])
 
             if s.IS_VERBOSE: 
-                print "INFO: CP", control[0], "dimensions:"
-                print "      x:", control_x, "y:", control_y, "w:", control_w, "h:", control_h
+                print ("INFO: CP", control[0], "dimensions:")
+                print ("      x:", control_x, "y:", control_y, "w:", control_w, "h:", control_h)
             
             # append control average pixel to list of averages
             control_average = imageread.get_area_average(
@@ -370,16 +370,16 @@ def run():
             # number of control points that conflict with parking space reading
             num_controls = 0
             
-            print "INFO: Checking for differences...\n     ",
+            print ("INFO: Checking for differences...\n     "),
             # for each control point (3 in total) compare each parking space
             for control in control_averages:
                 
                 # make comparison
                 if imageread.compare_area(space, control):
                     num_controls += 1
-                    print "Y",
+                    print ("Y"),
                 else:
-                    print "N",
+                    print ("N"),
 
             # determine if parking space is occupied. If at least two CPs agree
             # that the space is occupied, set the space to occupied.
@@ -387,14 +387,14 @@ def run():
             if num_controls >= 2: is_occupied = True
             
             if s.IS_VERBOSE and is_occupied:
-                print "=> Space", i[0], "is filled.\n"
+                print ("=> Space", i[0], "is filled.\n")
             elif s.IS_VERBOSE and not is_occupied:
-                print "=> Space", i[0], "is empty.\n"
+                print ("=> Space", i[0], "is empty.\n")
             
             # update the server with most recent space values after 3 ticks
             if last_status[i[0]] != is_occupied:
-                print "      Detected change in space", i[0]
-                print "      Space", i[0], "has been", ("occupied" if is_occupied else "vacant"), "for", last_ticks[i[0]], "tick(s).\n"
+                print ("      Detected change in space", i[0])
+                print ("      Space", i[0], "has been", ("occupied" if is_occupied else "vacant"), "for", last_ticks[i[0]], "tick(s).\n")
                 
                 if last_ticks[i[0]] < 3:
                     last_ticks[i[0]] += 1
@@ -408,15 +408,15 @@ def run():
                     
                     sendoutput = senddata.send_update(i[0], num)
                     if "success" in sendoutput.keys():
-                        print "      Success:", sendoutput["success"]
+                        print ("      Success:", sendoutput["success"])
                     elif "error" in sendoutput.keys():
-                        print "      Error:", sendoutput["error"]
-                    print ''
+                        print ("      Error:", sendoutput["error"])
+                    print ('')
             else:
                 last_ticks[i[0]] = 1
                 
         app.updateText()
-        if s.IS_VERBOSE: print "INFO: Sleep for", loop_delay, "seconds... Zzz."
+        if s.IS_VERBOSE: print ("INFO: Sleep for", loop_delay, "seconds... Zzz.")
         imageread.time.sleep(loop_delay)
 
 
@@ -456,18 +456,18 @@ def __setup_box_data():
     # print error message and quit the program
     try:
         box_data = setup_data.boxes
-        print "INFO: box_data successfully created."
+        print ("INFO: box_data successfully created.")
     except:
-        print "ERROR: setup_data.py does not contain the variable 'boxes'."
+        print ("ERROR: setup_data.py does not contain the variable 'boxes'.")
         sys.exit()
     
     # setup_data.py exists, check that dictionary contains items, if dicionary
     # is empty print error message and quit the program
     if not box_data:
-        print "ERROR: boxes in setup_data.py is empty!"
+        print ("ERROR: boxes in setup_data.py is empty!")
         sys.exit()
     else:
-        print "INFO: box_data contains data!"
+        print ("INFO: box_data contains data!")
 
     space_boxes = []
     control_boxes = []
@@ -475,7 +475,7 @@ def __setup_box_data():
     for data_set in box_data:
         if data_set[1] == 0: space_boxes.append(data_set)
         elif data_set[1] == 1: control_boxes.append(data_set)
-        else: print "ERROR: Box-type not set to either 0 or 1."
+        else: print ("ERROR: Box-type not set to either 0 or 1.")
 
     print "space boxes:", space_boxes, "\ncontrol boxes:", control_boxes
     return space_boxes, control_boxes
