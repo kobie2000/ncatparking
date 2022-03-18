@@ -1,6 +1,4 @@
-#!/usr/bin/env python
 
-from TKinter import *
 import os
 import Tkinter as tk
 import tkMessageBox
