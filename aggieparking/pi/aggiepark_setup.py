@@ -69,8 +69,8 @@ class Application(tk.Frame):
         self.focus_set()
 
         if self.__is_verbose:
-            print "INFO: __parking_spaces length:", self.__parking_spaces.length()
-            print "INFO: __control_points length:", self.__control_points.length()
+            print ("INFO: __parking_spaces length:"), self.__parking_spaces.length()
+            print ("INFO: __control_points length:"), self.__control_points.length()
         
         # load the default background
         self.loadImage(self.DEFAULT_IMAGE, self.display, 
@@ -291,7 +291,7 @@ class Application(tk.Frame):
             if response: 
                 self.saveData()
             else:
-                tkMessageBox.showinfo(title = "PiPark Setup",
+                tkMessageBox.showinfo(title = "AggieParking Setup",
                     message = "Registration not completed.")
                 return
                 
@@ -300,7 +300,7 @@ class Application(tk.Frame):
 
             # data invalid, so display message and return
             tkMessageBox.showinfo(
-                title = "PiPark Setup",
+                title = "AggieParking Setup",
                 message = "Registration not complete.\n\nSaved data is "
                 + "invalid. Please ensure that there are 3 control points and "
                 + "at least 1 parking spaces marked."
@@ -314,7 +314,7 @@ class Application(tk.Frame):
             boxes = setup_data.boxes
             if not isinstance(boxes, list): raise ValueError()
         except:
-            print "ERROR: Setup data does not exist. Please run options 1 and 2 first."
+            print ("ERROR: Setup data does not exist. Please run options 1 and 2 first.")
             return
             
         # attempt to import the server senddata module
@@ -340,7 +340,7 @@ class Application(tk.Frame):
             if box[1] == 0:
                 output = senddata.register_area(box[0])
                 if "error" in output.keys():
-                    if self.__is_verbose: print "ERROR:", output["error"]
+                    if self.__is_verbose: print ("ERROR:"), output["error"]
                     return
                 else:
                     if self.__is_verbose:
@@ -349,15 +349,7 @@ class Application(tk.Frame):
         # print success message if verbose        
         if self.__is_verbose: print ("\nINFO: Server registration successful.")
         
-        
-# ==============================================================================
-#
-#  Event Handlers
-#
-# ==============================================================================
-    # --------------------------------------------------------------------------
-    #   Return-key-press Event Handler
-    # --------------------------------------------------------------------------
+
     def returnPressHandler(self, event):
         """
         Handle Return-key-press events. Capture a new setup image when PiCam
@@ -378,13 +370,13 @@ class Application(tk.Frame):
             self.__camera_is_active = False
             
             if self.__is_verbose: 
-                print "INFO: New setup image captured." 
-                print "INFO: PiCam deactivated."
+                print ("INFO: New setup image captured.") 
+                print ("INFO: PiCam deactivated.")
             
         except:
             # image failed to capture, show error message
             tkMessageBox.showerror(title = "Error!",
-                message = "Error: Failed to capture new setup image.")
+                message = ("Error: Failed to capture new setup image.")
                 
         # load the new setup image
         self.loadImage(self.SETUP_IMAGE, self.display,
@@ -394,9 +386,7 @@ class Application(tk.Frame):
         self.cps_button.config(state = tk.ACTIVE)
         self.spaces_button.config(state = tk.ACTIVE)
     
-    # --------------------------------------------------------------------------
-    #   Escape-key-press Event Handler
-    # --------------------------------------------------------------------------
+
     def escapePressHandler(self, event):
         # ensure focus on window
         self.focus_set()
@@ -443,9 +433,7 @@ class Application(tk.Frame):
                 # for input
                 self.__control_points.setCurrentBox(int(key) - 1)
     
-    # --------------------------------------------------------------------------
-    #   LMB Event Handler
-    # --------------------------------------------------------------------------
+  
     def leftClickHandler(self, event):
         """Handle LMB-click events to add/remove control points & spaces. """
         
@@ -478,10 +466,7 @@ class Application(tk.Frame):
 
         # return focus to the main frame for key-press events
         self.focus_set()
-        
-    # --------------------------------------------------------------------------
-    #   RMB Event Handler
-    # --------------------------------------------------------------------------
+   
     def rightClickHandler(self, event):
         """Handle RMB-click events to add/remove control points & spaces. """
         
@@ -510,15 +495,10 @@ class Application(tk.Frame):
         self.focus_set()
 
 
-# ==============================================================================
-#
-#  Button Handlers
-#
-# ==============================================================================
     def clickStart(self):
         """
         Close the current setup application, then initiate the main
-        PiPark program.
+        AggieParking program.
 
         """
         if self.__is_verbose: print ("ACTION: Clicked 'Start'")
@@ -687,14 +667,7 @@ class Application(tk.Frame):
         if self.__is_verbose: print ("INFO: Opened ./SETUP_README.txt in leafpad.")
         
         
-# ==============================================================================
-#
-#  Application Layout Management
-#
-# ==============================================================================  
-    # --------------------------------------------------------------------------
-    #   Create Image Display Canvas
-    # --------------------------------------------------------------------------
+
     def __createDisplay(self):
         """
         Create the display tkinter canvas to hold the images taken by the
@@ -710,9 +683,7 @@ class Application(tk.Frame):
         self.display.grid(row = 2, column = 0, rowspan = 1, columnspan = 6)
 
 
-    # --------------------------------------------------------------------------
-    #   Create Options Menu
-    # --------------------------------------------------------------------------
+  
     def __createMenu(self):
         """Create a tkinter canvas in which to hold the menu buttons. """
         
@@ -793,14 +764,7 @@ class Application(tk.Frame):
             sticky = tk.W + tk.E + tk.N + tk.S)
 
 
-# ==============================================================================
-#
-#   Getters and Setters
-#
-# ==============================================================================  
-    # --------------------------------------------------------------------------
-    #   Is Verbose?
-    # --------------------------------------------------------------------------
+
     def getIsVerbose():
         return self.__is_verbose
     
@@ -808,11 +772,7 @@ class Application(tk.Frame):
         if isinstance(value, bool): self.__is_verbose = value
 
 
-# ==============================================================================
-#
-#   Run Main Program
-#
-# ==============================================================================  
+#runs main program
 if __name__ == "__main__":
 
     root = tk.Tk()
