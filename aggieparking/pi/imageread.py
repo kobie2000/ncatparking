@@ -1,12 +1,9 @@
 
-# -----------------------------------------------------------------------------
-#  Imports
-# -----------------------------------------------------------------------------
-# python
+
 import sys
 import time
 
-# PiPark
+
 import data.settings as s
     
 try: 
@@ -23,12 +20,10 @@ except ImportError:
     sys.exit()
 
 
-# -----------------------------------------------------------------------------
-#  Setup Camera
-# -----------------------------------------------------------------------------
+
 def setup_camera(is_fullscreen = True):
     """
-    Setup the PiCam to default PiPark settings, and return the camera as
+    Setup the camera to default settings, and return the camera as
     an object.
     
     Keyword Arguments:
@@ -68,17 +63,14 @@ def load_image(filename):
     """
     
     # Load the file
-    print "INFO: Loading Image: " +str(filename)
+    print ("INFO: Loading Image: " +str(filename))
     image = Image.open(filename)
     pixels = image.load()
-    print "INFO: Image loaded."
+    print ("INFO: Image loaded.")
     
     return (image, pixels)
 
 
-# -----------------------------------------------------------------------------
-#  Get Area Average
-# -----------------------------------------------------------------------------
 def get_area_average(pixels, x, y, w, h):
     """
     Calculate and return the average RGB values in a selected area of a picture
