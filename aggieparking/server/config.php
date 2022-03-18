@@ -18,6 +18,6 @@ class Conf{
 	const TITLE = 'AggieParking';
 	
 	// Google maps API key
-	const MAPS_API_KEY = 'AIzaSyCxTGtd15r1PXxGyPSA17YjoPcN73ENmPc';
+	const MAPS_API_KEY = '';
 }
 ?>
