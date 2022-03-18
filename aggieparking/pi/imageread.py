@@ -12,14 +12,14 @@ import data.settings as s
 try: 
     import picamera
 except ImportError:
-    print "ERROR: PiCamera Module needs to be installed."
+    print ("ERROR: PiCamera Module needs to be installed.")
     sys.exit()
 
 # Pythonware, Image Library
 try:
     from PIL import Image
 except ImportError:
-    print "ERROR: Python Image Library needs to be installed."
+    print ("ERROR: Python Image Library needs to be installed.")
     sys.exit()
 
 
