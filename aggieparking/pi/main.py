@@ -1,6 +1,4 @@
-#!/usr/bin/env python
 
-# les importations
 import Tkinter as tk
 import tkMessageBox
 import thread
