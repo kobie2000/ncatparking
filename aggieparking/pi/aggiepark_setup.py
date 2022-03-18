@@ -3,7 +3,7 @@
 import os
 import Tkinter as tk
 import tkMessageBox
-from PIL import Image, ImageTk
+from Pillow import Image, ImageTk
 
 import imageread
 import main
