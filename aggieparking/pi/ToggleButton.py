@@ -5,7 +5,6 @@ import Tkinter as tk
 
 class ToggleButton(tk.Button):
     
-   
     
     # is the button toggled or not?
     __is_active = False
