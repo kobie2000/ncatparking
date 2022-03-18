@@ -20,18 +20,14 @@ class ToggleButton(tk.Button):
     NORMAL_HL = "#EDEDED"  # this colour doesn't have a name, lets call him bob
     
     
-    # --------------------------------------------------------------------------
-    #   Constructor Method
-    # --------------------------------------------------------------------------
+    
     def __init__(self, master = None):
         """Constructor Method, just runs the super constructor. """
         
         # run super constructor method
         tk.Button.__init__(self, master)
     
-    # --------------------------------------------------------------------------
-    #   Toggle the Button
-    # --------------------------------------------------------------------------
+   
     def toggle(self):
         """
         Change the button's state (active<->normal) and appearance accordingly.
@@ -42,9 +38,7 @@ class ToggleButton(tk.Button):
         else:
             self.setOn()
     
-    # --------------------------------------------------------------------------
-    #   Set the Button to off/ on
-    # --------------------------------------------------------------------------
+   
     def setOff(self):
         """Set the button to 'normal' (off, untoggled) state. """
         self.__is_active = False
@@ -66,9 +60,7 @@ class ToggleButton(tk.Button):
         )
         
         
-    # --------------------------------------------------------------------------
-    #   Get __is_active
-    # --------------------------------------------------------------------------      
+       
     def getIsActive(self):
         """Return whether the button is active (True) or not (False). """
         return self.__is_active
