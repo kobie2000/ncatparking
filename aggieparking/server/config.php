@@ -5,8 +5,8 @@ class Conf{
 	// MySQL Database Settings.
 	const DB_HOST = "127.0.0.1";
 	const DB_USER = "root";
-	const DB_PASS = "";
-	const DB_DATABASE = "raspi";
+	const DB_PASS = "Minnesota#2324";
+	const DB_DATABASE = "db";
 	
 	// Base URL on the server.
 	const URL_BASE = "/aggieparking/server/";
