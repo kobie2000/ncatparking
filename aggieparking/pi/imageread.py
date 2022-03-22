@@ -44,9 +44,7 @@ def setup_camera(is_fullscreen = True):
     
     return camera
 
-# -----------------------------------------------------------------------------
-#  Load Image
-# -----------------------------------------------------------------------------
+
 def load_image(filename):
     """
     Loads a picture using PIL.
@@ -111,9 +109,6 @@ def get_area_average(pixels, x, y, w, h):
     return totals
 
 
-# -----------------------------------------------------------------------------
-#  Compare Area
-# -----------------------------------------------------------------------------
 def compare_area(test, expected):
     """
     Compare the RGB values of the test average RGB values and the expected 
@@ -144,11 +139,7 @@ def compare_area(test, expected):
             is_different = True
     
     return is_different
-
-
-# -----------------------------------------------------------------------------
-#  Test
-# -----------------------------------------------------------------------------   
+ 
 def test(filename):
     """
     Test functions in this module (get_area_average() and compare_area()).
