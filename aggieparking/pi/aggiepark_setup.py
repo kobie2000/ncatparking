@@ -354,8 +354,7 @@ class Application(tk.Frame):
                 message = ("Error: Failed to capture new setup image.")
                 
         # load the new setup image
-        self.loadImage(self.SETUP_IMAGE, self.display,
-            s.PICTURE_RESOLUTION[0]/2, s.PICTURE_RESOLUTION[1]/2)
+        self.loadImage(self.SETUP_IMAGE, self.display,s.PICTURE_RESOLUTION[0]/2, s.PICTURE_RESOLUTION[1]/2)
         
         # activate buttons if they're disabled
         self.cps_button.config(state = tk.ACTIVE)
