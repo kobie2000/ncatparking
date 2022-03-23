@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-import Tkinter as tk
+import tkinter as tk
 import tkMessageBox
 
 class Application(tk.Frame):
