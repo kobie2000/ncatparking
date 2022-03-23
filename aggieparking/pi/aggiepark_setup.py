@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-import tkinter as tk
+import Tkinter as tk
 import tkMessageBox
 from PIL import Image, ImageTk
 
