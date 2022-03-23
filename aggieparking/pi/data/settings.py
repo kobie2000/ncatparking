@@ -36,6 +36,6 @@ PARK_ID = 1
 
 SERVER_PASS = "pi"
 
-SERVER_URL = "http://10.173.33.129/aggieparking/server/"
+SERVER_URL = "http://localhost/aggieparking/server/"
 
 
