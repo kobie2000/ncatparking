@@ -1,7 +1,7 @@
 
 
 import os
-import Tkinter as tk
+import tkinter as tk
 import tkMessageBox
 from PIL import Image, ImageTk
 
