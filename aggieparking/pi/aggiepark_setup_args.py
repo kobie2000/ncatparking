@@ -123,7 +123,7 @@ class Application(tk.Frame):
             # Print the dictionary data to the file
             print >>f1, ostr
         
-            print 'Settings saved in file /data/settings.py.'
+            print ('Settings saved in file /data/settings.py.')
             tkMessageBox.showinfo("Pi Setup", "Settings saved in file.")
         else:
             tkMessageBox.showerror("Pi Setup", "Error in inputs. Did not write to file.")
