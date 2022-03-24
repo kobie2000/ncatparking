@@ -2,7 +2,7 @@
 
 import os
 import tkinter as tk
-import tkMessageBox
+from tk import messagebox as tkMessageBox
 from PIL import Image, ImageTk
 
 import imageread
