@@ -370,7 +370,7 @@ def run():
                 else:
                     last_status[i[0]] = is_occupied
                     last_ticks[i[0]] = 1
-                    print "      Space", i[0], "has changed status, sending update to server...\n"
+                    print ("      Space", i[0], "has changed status, sending update to server...\n")
                     num = 1 if is_occupied else 0
                     occupancy = last_status
                     
