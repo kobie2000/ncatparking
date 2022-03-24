@@ -1,6 +1,6 @@
 import tkinter 
 from tkinter import messagebox
-import thread
+import threading
 import time
 import urllib
 
