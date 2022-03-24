@@ -1,5 +1,5 @@
-import tkinter as tk
-from tk import messagebox
+import tkinter 
+from tkinter import messagebox
 import thread
 import time
 import urllib
