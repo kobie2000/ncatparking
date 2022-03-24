@@ -303,7 +303,7 @@ def run():
             space_averages.append(space_average)
         
         
-        if s.IS_VERBOSE: print ""  # line break
+        if s.IS_VERBOSE: print ("")  # line break
 
         # setup CP dimensions and averages and, if verbose, print to terminal
         for control in control_boxes:
@@ -331,7 +331,7 @@ def run():
         
         # average pixel values now calculated for all Control Points and Parking
         # Spaces. Now move on to comparison and upload phase.
-        if s.IS_VERBOSE: print "\n\n"  # doubleline break
+        if s.IS_VERBOSE: print ("\n\n")  # doubleline break
         
         # compare control points averages to parking spaces averages
         for i, space in zip(space_boxes, space_averages):
@@ -407,7 +407,7 @@ def main():
         thread.start_new_thread(create_application, ())
         thread.start_new_thread(run, ())
     except:
-    	print "ERROR: Failed to start new thread. =("
+    	print ("ERROR: Failed to start new thread. =(")
         
     # do not end main thread until user has quit and destroyed the application
     while not has_quit:
