@@ -2,7 +2,7 @@
 
 import os
 import tkinter as tk
-import tkMessageBox
+from tkinter import messagebox
 
 class Application(tk.Frame):
 
