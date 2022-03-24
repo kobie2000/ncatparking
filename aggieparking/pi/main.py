@@ -438,11 +438,14 @@ def __setup_box_data():
     control_boxes = []
     
     for data_set in box_data:
-        if data_set[1] == 0: space_boxes.append(data_set)
-        elif data_set[1] == 1: control_boxes.append(data_set)
-        else: print ("ERROR: Box-type not set to either 0 or 1.")
+        if data_set[1] == 0: 
+            space_boxes.append(data_set)
+        elif data_set[1] == 1: 
+            control_boxes.append(data_set)
+        else: 
+            print ("ERROR: Box-type not set to either 0 or 1.")
 
-    print "space boxes:", space_boxes, "\ncontrol boxes:", control_boxes
+    print ("space boxes:", space_boxes, "\ncontrol boxes:", control_boxes)
     return space_boxes, control_boxes
         
 
