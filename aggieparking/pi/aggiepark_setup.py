@@ -46,10 +46,10 @@ class Application(tk.Frame):
         self.focus_set()
 
         if self.__is_verbose:
-            print ("INFO: __parking_spaces length:"),
-                    self.__parking_spaces.length()
-            print ("INFO: __control_points length:"),
-                    self.__control_points.length() 
+            print (("INFO: __parking_spaces length:"),
+                   self.__parking_spaces.length())
+            print (("INFO: __control_points length:"),
+                   self.__control_points.length())
         # load the default background
         self.loadImage(self.DEFAULT_IMAGE, self.display,
                        s.PICTURE_RESOLUTION[0]/2, s.PICTURE_RESOLUTION[1]/2)
@@ -57,7 +57,7 @@ class Application(tk.Frame):
     def loadImage(self, image_address, canvas, width, height):
         # clear the old canvas
         canvas.delete(tk.ALL)
-        
+  
         try:
             # guard against incorrect argument datatypes
             if not isinstance(canvas, tk.Canvas):
@@ -67,8 +67,7 @@ class Application(tk.Frame):
             if not isinstance(width, int):
                 raise TypeError
             if not isinstance(height, int):
-                raise TypeError
-            
+                raise TypeError   
             # load the image into the canvas
             photo = ImageTk.PhotoImage(Image.open(image_address))
             canvas.create_image((width, height), image=photo)
@@ -233,14 +232,12 @@ class Application(tk.Frame):
                                                 message="Setup data " + 
                                                 " must be saved before the " +
                                                 " process can be completed."
-                
-            # if user selects 'yes' save the data and continue, else do not 
-            # register the pi
+                                   
             if response: 
                 self.saveData()
             else:
-                tkMessageBox.showinfo(title = "AggieParking Setup",
-                    message = "Registration not completed.")
+                tkMessageBox.showinfo(title="AggieParking Setup",
+                                      message="Registration not completed.")
                 return
                 
         # check that most recent saved data is valid (#CPs == 3, #Spaces > 0)
@@ -248,8 +245,8 @@ class Application(tk.Frame):
 
             # data invalid, so display message and return
             tkMessageBox.showinfo(
-                title = "AggieParking Setup",
-                message = "Registration not complete.\n\nSaved data is " +
+                title="AggieParking Setup",
+                message="Registration not complete.\n\nSaved data is " +
                 "invalid. Please ensure that there are 3 control points and " +
                 "at least 1 parking spaces marked."
                 )
@@ -279,7 +276,7 @@ class Application(tk.Frame):
         
         try:
             out['error']
-            print ("ERROR: Error in connecting to server. Please update settings.py.")
+            print ("ERROR: Error in connecting to server.")
             return
         except:
             pass
@@ -299,7 +296,7 @@ class Application(tk.Frame):
         if self.__is_verbose: print ("\nINFO: Server registration successful.")
         
 
-    def returnPressHandler(self, event):
+        def returnPressHandler(self, event):
         """
         Handle Return-key-press events. Capture a new setup image when PiCam
         is active, and load the image.
@@ -316,7 +313,7 @@ class Application(tk.Frame):
             self.__camera.capture(self.SETUP_IMAGE)
             self.__camera.stop_preview()
             self.__camera.close()
-            self.__camera_is_active = False
+            self.__camera_is_active=False
             
             if self.__is_verbose: 
                 print ("INFO: New setup image captured.") 
@@ -325,7 +322,7 @@ class Application(tk.Frame):
         except:
             # image failed to capture, show error message
             tkMessageBox.showerror(title = "Error!",
-                message = ("Error: Failed to capture new setup image.")
+                                    message = ("Error: No new setup image.")
                 
             # load the new setup image
             self.loadImage(self.SETUP_IMAGE, self.display, 
@@ -394,8 +391,8 @@ class Application(tk.Frame):
             if self.__is_verbose: print ("INFO: Add Control Point")
             self.__is_saved = False
             
-            this_cp_id = self.__control_points.getCurrentBox()
-            this_cp = self.__control_points.boxes[this_cp_id]
+            this_cp_id=self.__control_points.getCurrentBox()
+            this_cp=self.__control_points.boxes[this_cp_id]
             this_cp.updatePoints(event.x, event.y)
         
         # add new parking space
@@ -462,11 +459,11 @@ class Application(tk.Frame):
         # if setup data has not been saved. Ask user if they would like to save
         # before continuing.
         if not self.__is_saved:
-            response = tkMessageBox.askyesno(
-                title = "Save Setup",
-                type = tkMessageBox.YESNOCANCEL,
-                message = "Most recent changes to setup have not been saved."
-                + "Would you like to save before running AggieParking?"
+            response=tkMessageBox.askyesno(
+                title="Save Setup",
+                type=tkMessageBox.YESNOCANCEL,
+                message="Most recent changes to setup have not been saved." +
+                        "Would you like to save before running AggieParking?"
                 )
             if response: self.saveData()
             
@@ -484,10 +481,10 @@ class Application(tk.Frame):
 
                 # data invalid, so display message and return
                 tkMessageBox.showinfo(
-                    title = "AggieParking Setup",
-                    message = "Saved data is invalid. Please ensure that "
-                    + "there are 3 control points and at least 1 parking "
-                    + "space marked."
+                    title="AggieParking Setup",
+                    message="Saved data is invalid. Please ensure that " +
+                            "there are 3 cps and at least 1 parking " +
+                            "space marked."
                     )
                 return
                     
@@ -509,7 +506,7 @@ class Application(tk.Frame):
     def clickNewImage(self):
         """Use PiCam to take new 'setup image' for AggieParking setup. """
         if self.__is_verbose: print ("ACTION: Clicked 'Capture New Image'")
-        self.__is_saved = False
+        self.__is_saved=False
         
         # turn off toggle buttons
         self.spaces_button.setOff()
