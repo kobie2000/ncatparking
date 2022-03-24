@@ -32,9 +32,7 @@ class Application(tk.Frame):
     DEFAULT_IMAGE = "./images/aggies_default.jpg"
     
     
-    # --------------------------------------------------------------------------
-    #   Constructor Method
-    # --------------------------------------------------------------------------
+  
     def __init__(self, master = None):
         """Application constructor method. """
 
