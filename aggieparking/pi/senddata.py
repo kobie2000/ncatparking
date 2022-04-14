@@ -1,6 +1,4 @@
-
 import urllib
-import urllib2
 import json
 import data.settings as s
 
@@ -20,16 +18,16 @@ def post_request(vals, url):
     data = urllib.urlencode(vals)
     
     try:
-        request  = urllib2.Request(url, data)
-        response = urllib2.urlopen(request)
-    except urllib2.HTTPError, err:
+        request  = urllib.Request(url, data)
+        response = urllib.urlopen(request)
+    except urllib.HTTPError as err:
         return {"error": err.reason, "error_code": err.code}
     except:
         return {"error": "Error in connecting to server."}
     # Return the response parsed as a array from json
     try:
         return json.loads(response.read())
-    except ValueError, err:
+    except ValueError as err:
         return {"error": "JSON decoding error"}
 
 def send_update(area_id, status_code):
@@ -92,4 +90,4 @@ if __name__ == "__main__":
     # Example for sending updates
     for i in range(0,5):
         j = send_update(i, 1)
-        print j
+        print (j)
