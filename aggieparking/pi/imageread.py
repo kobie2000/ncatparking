@@ -1,8 +1,5 @@
-
-
 import sys
 import time
-
 
 import data.settings as s
     
