@@ -1,8 +1,6 @@
-
-
 import os
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import tkMessageBox
 
 class Application(tk.Frame):
 
