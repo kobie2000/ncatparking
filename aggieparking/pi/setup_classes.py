@@ -1,4 +1,3 @@
-
 import tkinter as tk
 
 
@@ -22,7 +21,7 @@ class ParkingSpace:
     
     
     def clear(self):
-    	"""Clear the coordinates of the space. """
+        """Clear the coordinates of the space. """
         self.__start_point = []
         self.__end_point = []
         
@@ -30,17 +29,17 @@ class ParkingSpace:
     
     
     def setStartPoint(self, x, y):
-    	"""
-    	Set the start point of the parking space.
-    	
-    	Keyword Arguments: 
-    	x -- x-coordinate of the parking space
+        """
+        Set the start point of the parking space.
+        
+        Keyword Arguments: 
+        x -- x-coordinate of the parking space
         y -- y-coordinate of the parking space
         
         Returns:
         self -- The parking space
         
-    	"""
+        """
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
             print ("ERROR: Cannot set start point: x & y must be integers.")
@@ -51,17 +50,17 @@ class ParkingSpace:
     
     
     def setEndPoint(self, x, y):
-    	"""
-    	Set the end point of the parking space.
-    	
-    	Keyword Arguments: 
-    	x -- x-coordinate of the parking space
+        """
+        Set the end point of the parking space.
+        
+        Keyword Arguments: 
+        x -- x-coordinate of the parking space
         y -- y-coordinate of the parking space
         
         Returns:
         self -- The parking space
         
-    	"""
+        """
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
             print ("ERROR: Cannot set end point: x & y must be integers.")
@@ -72,14 +71,14 @@ class ParkingSpace:
     
     
     def updatePoints(self, x, y):
-    	"""
-    	Update the values of the co-ordinates.
-    	
-    	Keyword Arguments: 
-    	x -- x-coordinate of the parking space
+        """
+        Update the values of the co-ordinates.
+        
+        Keyword Arguments: 
+        x -- x-coordinate of the parking space
         y -- y-coordinate of the parking space
         
-    	"""
+        """
         if self.__start_point == [] or self.__end_point != []:
             self.clear()
             self.deleteRectangle(self.canvas)
@@ -90,13 +89,13 @@ class ParkingSpace:
     
     
     def drawRectangle(self, canvas):
-    	"""
-    	Draw the rectangle for the box on the canvas.
-    	
-    	Keyword Arguments: 
-    	canvas -- TkCanvas in which to draw the rectangle
+        """
+        Draw the rectangle for the box on the canvas.
         
-    	"""
+        Keyword Arguments: 
+        canvas -- TkCanvas in which to draw the rectangle
+        
+        """
         # guard against illegal data types
         if not isinstance(canvas, tk.Canvas): return
         
@@ -123,19 +122,19 @@ class ParkingSpace:
         
     
     def deleteRectangle(self, canvas):
-    	"""
-    	Delete the box rectangle from the canvas.
-    	
-    	Keyword Arguments:
+        """
+        Delete the box rectangle from the canvas.
+        
+        Keyword Arguments:
         canvas -- TkCanvas from which to delete the rectangle
         
-    	"""
+        """
         canvas.delete(self.__rectangle)
         canvas.delete(self.__label)
         return self
 
     def getOrigins(self):
-    	"""Gets the most upper left co-ordinate of the box. """
+        """Gets the most upper left co-ordinate of the box. """
         result = []
         
         if self.__start_point[0] < self.__end_point[0]: result.append(self.__start_point[0])
@@ -147,13 +146,13 @@ class ParkingSpace:
         return result
         
     def getOutput(self):
-    	"""
-    	Gets the output to be saved in a file.
-    		
-    	Returns:
-    	Tuple of (id, type, x1, y1, x2, y2) or None if box is not present/complete.
+        """
+        Gets the output to be saved in a file.
+            
+        Returns:
+        Tuple of (id, type, x1, y1, x2, y2) or None if box is not present/complete.
         
-    	"""
+        """
         
         if self.__start_point != [] and self.__end_point != []:
             space = (
@@ -189,24 +188,24 @@ class ControlPoint:
         return
     
     def clear(self):
-    	"""Clear the coordinates of the space. """
+        """Clear the coordinates of the space. """
         self.__start_point = []
         self.__end_point = []
         
         return self
     
     def setStartPoint(self, x, y):
-    	"""
-    	Set the start point of the control point.
-    	
-    	Keyword Arguments: 
-    	x -- x-coordinate of the control point
+        """
+        Set the start point of the control point.
+        
+        Keyword Arguments: 
+        x -- x-coordinate of the control point
         y -- y-coordinate of the control point
         
         Returns:
         self -- The control point
         
-    	"""
+        """
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
             print ("ERROR: Cannot set start point: x & y must be integers.")
@@ -217,17 +216,17 @@ class ControlPoint:
     
     
     def setEndPoint(self, x, y):
-    	"""
-    	Set the end point of the control point.
-    	
-    	Keyword Arguments: 
-    	x -- x-coordinate of the control point
+        """
+        Set the end point of the control point.
+        
+        Keyword Arguments: 
+        x -- x-coordinate of the control point
         y -- y-coordinate of the control point
         
         Returns:
         self -- The control point
         
-    	"""
+        """
         # guard against invalid arguments
         if not isinstance(x, int) and not isinstance(y, int):
             print ("ERROR: Cannot set end point: x & y must be integers.")
@@ -238,14 +237,14 @@ class ControlPoint:
     
     
     def updatePoints(self, x, y):
-    	"""
-    	Update the values of the control point co-ordinates.
-    	
-    	Keyword Arguments: 
-    	x -- x-coordinate of the control point
+        """
+        Update the values of the control point co-ordinates.
+        
+        Keyword Arguments: 
+        x -- x-coordinate of the control point
         y -- y-coordinate of the control point
         
-    	"""
+        """
         x1 = x - 25
         y1 = y - 25
         x2 = x + 25
@@ -258,13 +257,13 @@ class ControlPoint:
         self.drawRectangle(self.canvas)
         
     def drawRectangle(self, canvas):
-    	"""
-    	Draw the rectangle for the box on the canvas.
-    	
-    	Keyword Arguments: 
-    	canvas -- TkCanvas in which to draw the rectangle
+        """
+        Draw the rectangle for the box on the canvas.
         
-    	"""
+        Keyword Arguments: 
+        canvas -- TkCanvas in which to draw the rectangle
+        
+        """
         # guard against illegal data types
         if not isinstance(canvas, tk.Canvas): return
         
@@ -292,25 +291,25 @@ class ControlPoint:
         
     
     def deleteRectangle(self, canvas):
-    	"""
-    	Delete the box rectangle from the canvas.
-    	
-    	Keyword Arguments:
+        """
+        Delete the box rectangle from the canvas.
+        
+        Keyword Arguments:
         canvas -- TkCanvas from which to delete the rectangle
         
-    	"""
+        """
         canvas.delete(self.__rectangle)
         canvas.delete(self.__label)
         return self
 
     def getOutput(self):
-    	"""
-    	Gets the output to be saved in a file.
-    		
-    	Returns:
-    	Tuple of (id, type, x1, y1, x2, y2) or None if box is not present/complete.
+        """
+        Gets the output to be saved in a file.
+            
+        Returns:
+        Tuple of (id, type, x1, y1, x2, y2) or None if box is not present/complete.
         
-    	"""
+        """
         
         if self.__start_point != [] and self.__end_point != []:
             cp = (
