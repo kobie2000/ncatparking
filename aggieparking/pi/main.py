@@ -1,9 +1,9 @@
-import tkinter 
-from tkinter import messagebox
+import tkinter as tk
+from tkinter import tkMessageBox
 import threading
 import time
 import urllib
-
+import sys
 from PIL import Image, ImageTk
 
 import senddata
@@ -107,7 +107,7 @@ class MainApplication(tk.Frame):
         # turn on the camera preview
         if self.__camera and not self.__preview_is_active:
             
-            messagebox.showinfo(
+            tkMessageBox.showinfo(
                 title = "Show Camera Feed",
                 message = "Press the ESCAPE key to exit preview mode"
                 )
@@ -199,7 +199,7 @@ class MainApplication(tk.Frame):
             
     
     
-    def getIsVerbose():
+    def getIsVerbose(self):
         """Retrun boolean whether application is verbose or not. """
         return self.__is_verbose
         
@@ -369,7 +369,7 @@ def run():
                 else:
                     last_status[i[0]] = is_occupied
                     last_ticks[i[0]] = 1
-                    print ("      Space", i[0], "has changed status, sending update to server...\n")
+                    print ("      Space"), i[0], "has changed status, sending update to server...\n"
                     num = 1 if is_occupied else 0
                     occupancy = last_status
                     
@@ -403,14 +403,14 @@ def main():
     # the other the run the main program loop.
     
     try:
-        thread.start_new_thread(create_application, ())
-        thread.start_new_thread(run, ())
+        threading.start_new_thread(create_application, ())
+        threading.start_new_thread(run, ())
     except:
-    	print ("ERROR: Failed to start new thread. =(")
+        print ("ERROR: Failed to start new thread. =(")
         
     # do not end main thread until user has quit and destroyed the application
     while not has_quit:
-    	pass
+        pass
 
 
 def __setup_box_data():
@@ -437,12 +437,9 @@ def __setup_box_data():
     control_boxes = []
     
     for data_set in box_data:
-        if data_set[1] == 0: 
-            space_boxes.append(data_set)
-        elif data_set[1] == 1: 
-            control_boxes.append(data_set)
-        else: 
-            print ("ERROR: Box-type not set to either 0 or 1.")
+        if data_set[1] == 0: space_boxes.append(data_set)
+        elif data_set[1] == 1: control_boxes.append(data_set)
+        else: print ("ERROR: Box-type not set to either 0 or 1.")
 
     print ("space boxes:", space_boxes, "\ncontrol boxes:", control_boxes)
     return space_boxes, control_boxes
