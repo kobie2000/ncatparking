@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import tkMessageBox
+from tkinter import messagebox
 import threading
 import time
 import urllib
@@ -107,7 +107,7 @@ class MainApplication(tk.Frame):
         # turn on the camera preview
         if self.__camera and not self.__preview_is_active:
             
-            tkMessageBox.showinfo(
+            messagebox.showinfo(
                 title = "Show Camera Feed",
                 message = "Press the ESCAPE key to exit preview mode"
                 )
