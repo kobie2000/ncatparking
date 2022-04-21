@@ -1,6 +1,6 @@
 import os
 import tkinter as tk
-from tkinter import tkMessageBox
+from tkinter import messagebox
 from PIL import Image, ImageTk
 
 import imageread
@@ -122,7 +122,7 @@ class Application(tk.Frame):
 
         """
         # show quick dialogue box with basic instruction
-        tkMessageBox.showinfo(title = "",
+        messagebox.showinfo(title = "",
             message = "Press the ENTER key to take a new setup image "
             + "or the ESCAPE key to cancel.")
 
@@ -137,7 +137,7 @@ class Application(tk.Frame):
             if self.__is_verbose: print ("INFO: PiCam activated.")
         except:
             # camera failed to load, display error message
-            tkMessageBox.showerror(title = "Error!",
+            messagebox.showerror(title = "Error!",
                 message = "Error: Failed to setup and start PiCam.")
     
   
@@ -173,7 +173,7 @@ class Application(tk.Frame):
         self.__is_saved = True
             
         if self.__is_verbose: print ('INFO: Data saved in file setup_data.py.')
-        tkMessageBox.showinfo(title = "AggieParking Setup", 
+        messagebox.showinfo(title = "AggieParking Setup", 
             message = "Data saved successfully.")
     
      
@@ -185,7 +185,7 @@ class Application(tk.Frame):
         except:
             if self.__is_verbose: 
                 print ("ERROR: Problem loading data from ./setup_data.py")
-            tkMessageBox.showerror(
+            messagebox.showerror(
                 title = "Error!", 
                 message = "Problem loading data from setup_data.py"
                 )
@@ -255,7 +255,7 @@ class Application(tk.Frame):
         # if setup hasn't been saved recently since last change, ask the if 
         # user to save first
         if not self.__is_saved:
-            response = tkMessageBox.askokcancel(title = "Save Setup",
+            response = messagebox.askokcancel(title = "Save Setup",
                 message = "Setup data must be saved before the registration"
                 + " process can be completed. Would you like to save now?")
                 
@@ -264,7 +264,7 @@ class Application(tk.Frame):
             if response: 
                 self.saveData()
             else:
-                tkMessageBox.showinfo(title = "AggieParking Setup",
+                messagebox.showinfo(title = "AggieParking Setup",
                     message = "Registration not completed.")
                 return
                 
@@ -272,7 +272,7 @@ class Application(tk.Frame):
         if not self.checkData():
 
             # data invalid, so display message and return
-            tkMessageBox.showinfo(
+            messagebox.showinfo(
                 title = "AggieParking Setup",
                 message = "Registration not complete.\n\nSaved data is "
                 + "invalid. Please ensure that there are 3 control points and "
@@ -348,7 +348,7 @@ class Application(tk.Frame):
             
         except:
             # image failed to capture, show error message
-            tkMessageBox.showerror(title = "Error!",
+            messagebox.showerror(title = "Error!",
                 message = ("Error: Failed to capture new setup image."))
                 
         # load the new setup image
@@ -488,9 +488,9 @@ class Application(tk.Frame):
         # if setup data has not been saved. Ask user if they would like to save
         # before continuing.
         if not self.__is_saved:
-            response = tkMessageBox.askyesno(
+            response = messagebox.askyesno(
                 title = "Save Setup",
-                type = tkMessageBox.YESNOCANCEL,
+                type = messagebox.YESNOCANCEL,
                 message = "Most recent changes to setup have not been saved."
                 + "Would you like to save before running AggieParking?"
                 )
@@ -498,7 +498,7 @@ class Application(tk.Frame):
             
         # data is saved, ask the user if they are sure they wish to quit.
         else:
-            response = tkMessageBox.askyesno(
+            response = messagebox.askyesno(
                 title = "Save Setup",
                 message = "Are you ready to leave setup and run AggieParking?"
                 )
@@ -509,7 +509,7 @@ class Application(tk.Frame):
             if not self.checkData():
 
                 # data invalid, so display message and return
-                tkMessageBox.showinfo(
+                messagebox.showinfo(
                     title = "AggieParking Setup",
                     message = "Saved data is invalid. Please ensure that "
                     + "there are 3 control points and at least 1 parking "
@@ -566,7 +566,7 @@ class Application(tk.Frame):
         if not self.loadImage(self.SETUP_IMAGE, self.display, 
                 s.PICTURE_RESOLUTION[0]/2, s.PICTURE_RESOLUTION[1]/2):
                 
-                tkMessageBox.showerror(title = "Error!",
+                messagebox.showerror(title = "Error!",
                 message = "Error loading setup image."
                 + " Please ensure setup image exists as ./image/setup_image.jpeg.")
                 
@@ -614,7 +614,7 @@ class Application(tk.Frame):
         response = True
         # if the user hasn't recently saved, ask if they really wish to quit
         if not self.__is_saved: 
-            response = tkMessageBox.askyesno(
+            response = messagebox.askyesno(
                 title = "Quit?",
                 message = "Are you sure you wish to quit?"
                 + "All unsaved setup will be lost."
