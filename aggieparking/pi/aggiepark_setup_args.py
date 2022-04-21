@@ -1,6 +1,6 @@
 import os
 import tkinter as tk
-from tkinter import tkMessageBox
+from tkinter import messagebox
 
 class Application(tk.Frame):
 
@@ -122,9 +122,9 @@ class Application(tk.Frame):
             print >>f1, ostr
         
             print ('Settings saved in file /data/settings.py.')
-            tkMessageBox.showinfo("Pi Setup", "Settings saved in file.")
+            messagebox.showinfo("Pi Setup", "Settings saved in file.")
         else:
-            tkMessageBox.showerror("Pi Setup", "Error in inputs. Did not write to file.")
+            messagebox.showerror("Pi Setup", "Error in inputs. Did not write to file.")
             
         return not fail
 
